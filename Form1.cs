@@ -25,6 +25,9 @@ namespace WindowsFormsApp4
         }
 
 
+
+
+        //0~9按鍵start
         private void button1_Click(object sender, EventArgs e)
         {
             textBoxTotal.Text = textBoxTotal.Text + "1";
@@ -78,40 +81,43 @@ namespace WindowsFormsApp4
             }
             textBoxTotal.Text = textBoxTotal.Text + "0";
         }
+        //0~9按鍵end
 
-        private void buttonPoint_Click(object sender, EventArgs e)
+
+
+        private void buttonPoint_Click(object sender, EventArgs e)// :.
         {
             // 確認輸入文字框中完全沒有小數點
             if (textBoxTotal.Text.IndexOf(".") == -1)
                 textBoxTotal.Text = textBoxTotal.Text + ".";
         }
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)// :+
         {
             firstNumber = Convert.ToSingle(textBoxTotal.Text); //將輸入文字框轉換成浮點數，存入第一個數字的全域變數
             textBoxTotal.Text = "0"; //重新將輸入文字框重新設定為0
             operators = 0; //選擇「加」號
         }
-        private void buttonSubtraction_Click(object sender, EventArgs e)
+        private void buttonSubtraction_Click(object sender, EventArgs e)// :-
         {
             firstNumber = Convert.ToSingle(textBoxTotal.Text);
             textBoxTotal.Text = "0";
             operators = 1;
         }
-        private void buttonMultiplication_Click(object sender, EventArgs e)
+        private void buttonMultiplication_Click(object sender, EventArgs e)// :*
         {
             firstNumber = Convert.ToSingle(textBoxTotal.Text);
             textBoxTotal.Text = "0";
             operators = 2;
         }
 
-        private void buttonDivision_Click(object sender, EventArgs e)
+        private void buttonDivision_Click(object sender, EventArgs e)// :/
         {
             firstNumber = Convert.ToSingle(textBoxTotal.Text);
             textBoxTotal.Text = "0";
             operators = 3;
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e)// :c
         {
             textBoxTotal.Text = "0";
             firstNumber = 0f;
@@ -119,12 +125,10 @@ namespace WindowsFormsApp4
             operators = -1;
         }
 
-        private void buttonEquals_Click(object sender, EventArgs e)
+        private void buttonEquals_Click(object sender, EventArgs e)// :=
         {
             float finalResults = 0f;//宣告最後計算結果變數
-            if(textBoxTotal.Text.IndexOf(".") == -1)
-            secondNumber = Convert.ToSingle(textBoxTotal.Text); //將輸入文字框轉換成浮點數，存入第二個數字的全域變數
-
+            secondNumber = Convert.ToSingle(textBoxTotal.Text);
             switch (operators)
             {
                 case 0:
