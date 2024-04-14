@@ -227,6 +227,7 @@ namespace WindowsFormsApp4
             this.buttonBack.TabIndex = 17;
             this.buttonBack.Text = "<--";
             this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // buttonClear
             // 
@@ -246,6 +247,7 @@ namespace WindowsFormsApp4
             this.buttonPercentage.TabIndex = 20;
             this.buttonPercentage.Text = "%";
             this.buttonPercentage.UseVisualStyleBackColor = true;
+            this.buttonPercentage.Click += new System.EventHandler(this.buttonPercentage_Click);
             // 
             // Form1
             // 

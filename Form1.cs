@@ -14,6 +14,7 @@ namespace WindowsFormsApp4
     {
         float firstNumber, secondNumber;
         int operators;
+        int i;
 
         public Form1()
         {
@@ -125,35 +126,77 @@ namespace WindowsFormsApp4
             operators = -1;
         }
 
-        private void buttonEquals_Click(object sender, EventArgs e)//等於(switch四則運算)
+        private void buttonPercentage_Click(object sender, EventArgs e)
+        {
+            i = 1;
+            float percentage = firstNumber * 0.01f; // 將 secondNumber 轉換為百分比形式
+            textBoxTotal.Text = string.Format("{0:P2}", percentage); // 格式化為百分比形式並顯示在文字框中
+        }
+
+
+        private void buttonBack_Click(object sender, EventArgs e)//倒退
+        {
+            int length = textBoxTotal.Text.Length;
+            if (length > 0)
+            {
+                textBoxTotal.Text = textBoxTotal.Text.Substring(0, length - 1);
+            }
+        }
+
+        private void buttonEquals_Click(object sender, EventArgs e)
         {
             float finalResults = 0f;//宣告最後計算結果變數
-            secondNumber = Convert.ToSingle(textBoxTotal.Text);
-            switch (operators)
+
+            // 檢查是否存在運算符
+            if (operators != -1)
             {
-                case 0:
-                    finalResults = firstNumber + secondNumber;
-                    break;
-                case 1:
-                    finalResults = firstNumber - secondNumber;
-                    break;
-                case 2:
-                    finalResults = firstNumber * secondNumber;
-                    break;
-                case 3:
-                    finalResults = firstNumber / secondNumber;
-                    break;
+                // 檢查是否已經計算過百分比
+                if (i != 1)
+                {
+                    // 將 secondNumber 轉換為浮點數
+                    secondNumber = Convert.ToSingle(textBoxTotal.Text);
+                }
+                else
+                {
+                    // 如果已經計算過百分比，將 secondNumber 設置為已計算的百分比值
+                    secondNumber = secondNumber * 0.01f;
+                }
+
+                // 執行運算
+                switch (operators)
+                {
+                    case 0:
+                        finalResults = firstNumber + secondNumber;
+                        break;
+                    case 1:
+                        finalResults = firstNumber - secondNumber;
+                        break;
+                    case 2:
+                        finalResults = firstNumber * secondNumber;
+                        break;
+                    case 3:
+                        finalResults = firstNumber / secondNumber;
+                        break;
+                }
+
+                // 重置 i，以便下一次計算
+                i = 0;
+            }
+            else
+            {
+                // 沒有按下操作符，只需要將結果設置為 firstNumber
+                finalResults = firstNumber;
             }
 
-            textBoxTotal.Text = string.Format("{0:0.##########}", finalResults); //在輸入文字框中，顯示最後計算結果，並且轉換成格式化的字串內容
+            // 顯示計算結果
+            textBoxTotal.Text = string.Format("{0:0.##########}", finalResults);
 
-            //重置所有全域變數
+            // 重置所有全域變數
             firstNumber = 0f;
             secondNumber = 0f;
             operators = -1;
-
-
         }
+
 
     }
 }
