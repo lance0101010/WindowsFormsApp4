@@ -24,62 +24,63 @@ namespace WindowsFormsApp4
 
         }
 
-
+        private void Add_Number(string _number)//0~9數字函式
+        {
+            if (textBoxTotal.Text == "0")
+                textBoxTotal.Text = "";
+            textBoxTotal.Text = textBoxTotal.Text + _number;
+        }
 
 
         //0~9按鍵start
         private void button1_Click(object sender, EventArgs e)
         {
-            textBoxTotal.Text = textBoxTotal.Text + "1";
+            Add_Number("1");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBoxTotal.Text = textBoxTotal.Text + "2";
+            Add_Number("2");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            textBoxTotal.Text = textBoxTotal.Text + "3";
+            Add_Number("3");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            textBoxTotal.Text = textBoxTotal.Text + "4";
+            Add_Number("4");
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            textBoxTotal.Text = textBoxTotal.Text + "5";
+            Add_Number("5");
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            textBoxTotal.Text = textBoxTotal.Text + "6";
+            Add_Number("6");
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            textBoxTotal.Text = textBoxTotal.Text + "7";
+            Add_Number("7");
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            textBoxTotal.Text = textBoxTotal.Text + "8";
+            Add_Number("8");
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            textBoxTotal.Text = textBoxTotal.Text + "9";
+            Add_Number("9");
         }
 
         private void button0_Click(object sender, EventArgs e)
         {
-            if (textBoxTotal.Text == "0")
-            {
-                textBoxTotal.Text = "";
-            }
-            textBoxTotal.Text = textBoxTotal.Text + "0";
+            Add_Number("0");
         }
         //0~9按鍵end
 
@@ -91,33 +92,32 @@ namespace WindowsFormsApp4
             if (textBoxTotal.Text.IndexOf(".") == -1)
                 textBoxTotal.Text = textBoxTotal.Text + ".";
         }
-        private void buttonAdd_Click(object sender, EventArgs e)// :+
+
+        private void Select_Operator(int _operator)//四則運算函式
         {
             firstNumber = Convert.ToSingle(textBoxTotal.Text); //將輸入文字框轉換成浮點數，存入第一個數字的全域變數
             textBoxTotal.Text = "0"; //重新將輸入文字框重新設定為0
-            operators = 0; //選擇「加」號
+            operators = _operator; //選擇「加」號
         }
-        private void buttonSubtraction_Click(object sender, EventArgs e)// :-
+        private void buttonAdd_Click(object sender, EventArgs e)//加法
         {
-            firstNumber = Convert.ToSingle(textBoxTotal.Text);
-            textBoxTotal.Text = "0";
-            operators = 1;
+            Select_Operator(0);
         }
-        private void buttonMultiplication_Click(object sender, EventArgs e)// :*
+        private void buttonSubtraction_Click(object sender, EventArgs e)//減法
         {
-            firstNumber = Convert.ToSingle(textBoxTotal.Text);
-            textBoxTotal.Text = "0";
-            operators = 2;
+            Select_Operator(1);
+        }
+        private void buttonMultiplication_Click(object sender, EventArgs e)//乘法
+        {
+            Select_Operator(2);
         }
 
-        private void buttonDivision_Click(object sender, EventArgs e)// :/
+        private void buttonDivision_Click(object sender, EventArgs e)//除法
         {
-            firstNumber = Convert.ToSingle(textBoxTotal.Text);
-            textBoxTotal.Text = "0";
-            operators = 3;
+            Select_Operator(3);
         }
 
-        private void buttonClear_Click(object sender, EventArgs e)// :c
+        private void buttonClear_Click(object sender, EventArgs e)//清除
         {
             textBoxTotal.Text = "0";
             firstNumber = 0f;
@@ -125,7 +125,7 @@ namespace WindowsFormsApp4
             operators = -1;
         }
 
-        private void buttonEquals_Click(object sender, EventArgs e)// :=
+        private void buttonEquals_Click(object sender, EventArgs e)//等於(switch四則運算)
         {
             float finalResults = 0f;//宣告最後計算結果變數
             secondNumber = Convert.ToSingle(textBoxTotal.Text);
