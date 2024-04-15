@@ -14,6 +14,7 @@ namespace WindowsFormsApp4
     {
         float firstNumber, secondNumber;
         int operators;
+        int i = 0;
 
         public Form1()
         {
@@ -127,11 +128,15 @@ namespace WindowsFormsApp4
 
         private void buttonPercentage_Click(object sender, EventArgs e)//百分比
         {
-            string a= string.Format("{0:P2}", textBoxTotal.Text); // 格式化為百分比形式
-            secondNumber = Convert.ToSingle(a);// 換成浮點數
+            i++;
+            //string a= string.Format("{0:P2}", textBoxTotal.Text); // 格式化為百分比形式
 
-            textBoxTotal.Text = string.Format("{0:0.##########}", secondNumber);
-            
+            float a= Convert.ToSingle(textBoxTotal.Text);// 換成浮點數
+            float b = firstNumber * a * 0.01f;
+            secondNumber = b;
+
+            // textBoxTotal.Text = string.Format("{0:0.##########}", secondNumber);
+
             //secondNumber = Convert.ToSingle(a);
         }
 
@@ -148,7 +153,12 @@ namespace WindowsFormsApp4
         private void buttonEquals_Click(object sender, EventArgs e)
         {
             float finalResults = 0f; //宣告最後計算結果變數
-            secondNumber = Convert.ToSingle(textBoxTotal.Text); //將輸入文字框轉換成浮點數，存入第二個數字的全域變數
+            if (i == 0)
+            {
+                secondNumber = Convert.ToSingle(textBoxTotal.Text);//將輸入文字框轉換成浮點數，存入第二個數字的全域變數 
+            }
+            
+               
 
             //依照四則運算符號的選擇，進行加減乘除
             switch (operators)
@@ -173,6 +183,7 @@ namespace WindowsFormsApp4
             firstNumber = 0f;
             secondNumber = 0f;
             operators = -1;
+            i = 0;
         }
 
 
