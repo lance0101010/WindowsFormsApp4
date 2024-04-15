@@ -131,9 +131,30 @@ namespace WindowsFormsApp4
             i++;
             //string a= string.Format("{0:P2}", textBoxTotal.Text); // 格式化為百分比形式
 
-            float a= Convert.ToSingle(textBoxTotal.Text);// 換成浮點數
-            float b = firstNumber * a * 0.01f;
-            secondNumber = b;
+            if (operators == 0)
+            {
+                float a = Convert.ToSingle(textBoxTotal.Text);// 換成浮點數
+                float b = firstNumber * a * 0.01f;
+                secondNumber = b;
+            }
+            else if (operators == 1)
+            {
+                float a = Convert.ToSingle(textBoxTotal.Text);// 換成浮點數
+                float b = firstNumber * a * 0.01f;
+                secondNumber = b;
+            }
+            else if(operators == 2)
+            {
+                float a = Convert.ToSingle(textBoxTotal.Text);// 換成浮點數
+                float b = a * 0.01f;
+                secondNumber = b;
+            }
+            else if(operators == 3)
+            {
+                float a = Convert.ToSingle(textBoxTotal.Text);// 換成浮點數
+                float b = a * 0.01f;
+                secondNumber = b;
+            }
 
             // textBoxTotal.Text = string.Format("{0:0.##########}", secondNumber);
 
